@@ -1,0 +1,123 @@
+<!doctype html>
+
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>QRecords - Generator</title>
+        <link rel="canonical" href="https://www.qrecords.de/create/"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    <link rel="stylesheet" href="qrecords.min.css">
+        <link rel="stylesheet" href="qrecords.min.css">
+        <script src="https://kit.fontawesome.com/c70aa3aeb4.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body class="bg-light">
+        <!-- Popup -->
+
+        <div class="modal fade" id="qrcodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-transparent border-0 px-3 pt-3" style="width: 531px;">
+                    <div class="modal-body" id="qrcode"></div>
+                    <div class="qrcode-footer">
+                        <button type="button" class="btn btn-primary" onclick="QRecords.print();">
+                            Drucken <i class="fas fa-print"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="navbar navbar-expand-lg fixed-top bg-primary">
+            <span class="navbar-nav d-none d-lg-flex px-3"></span>
+            <a class="navbar-brand" href="https://qrecords.de/" style="color: #212529 !important;"><b>QRecords</b></a>
+        </div>
+
+        <!-- Content -->
+        <div class="container" id="content">
+
+            <!-- Patient -->
+            <p class="scrollToAnchor"></p>
+            <div class="list-group">
+                <span class="list-group-item list-group-item-secondary">Patient</span>
+                <input type="text" class="list-group-item form-control" placeholder="Name" id="name">
+                <input type="text" class="list-group-item form-control" placeholder="Vorname" id="firstname">
+                <input type="date" class="list-group-item form-control" placeholder="Gebutsdatum" id="birthdate">
+            </div>
+
+            <!-- Kontaktdaten -->
+            <p class="scrollToAnchor"></p>
+            <div class="list-group">
+                <span class="list-group-item list-group-item-secondary">Notfall-Kontakt</span>
+                <input type="text" class="list-group-item form-control" placeholder="Name" id="emergency_name">
+                <input type="tel" class="list-group-item form-control" placeholder="Telefonnummer" id="emergency_number">
+            </div>
+            <br>
+            <div class="list-group">
+                <span class="list-group-item list-group-item-secondary">behandelnder Arzt</span>
+                <input type="text" class="list-group-item form-control" placeholder="Name" id="doctor_name">
+                <input type="tel" class="list-group-item form-control" placeholder="Telefonnummer" id="doctor_number">
+            </div>
+
+            <!-- Allergien -->
+            <p class="scrollToAnchor"></p>
+            <div class="list-group" id="allergies_list">
+                <div class="list-group-item list-group-item-secondary">
+                    <span>Allergien</span>
+                    <button type="button" class="btn btn-outline-success float-right"
+                            onclick="QRecords.page.addAllergie()" id="allergies_btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Medikamente -->
+            <p class="scrollToAnchor"></p>
+            <div class="list-group" id="medications_list">
+                <div class="list-group-item list-group-item-secondary">
+                    <span>Medikamente</span>
+                    <button type="button" class="btn btn-outline-success float-right"
+                            onclick="QRecords.page.addMedication()" id="medications_btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Diagnosen -->
+            <p class="scrollToAnchor"></p>
+            <div class="list-group" id="diagnoses_list">
+                <div class="list-group-item list-group-item-secondary">
+                    <span>Diagnosen</span>
+                    <button type="button" class="btn btn-outline-success float-right"
+                            onclick="QRecords.page.addDiagnose()" id="diagnoses_btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Freitext -->
+            <p class="scrollToAnchor"></p>
+            <div class="list-group">
+                <span class="list-group-item list-group-item-secondary">Notizen</span>
+                <textarea class="list-group-item form-control" placeholder="Freitext" id="notes"></textarea>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <nav class="navbar fixed-bottom navbar-expand-lg bg-primary px-0">
+            <div class="container">
+                <div class="col px-1 icon" onClick='QRecords.page.generateAnchor();'>
+                    Generieren
+                </div>
+            </div>
+        </nav>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+                crossorigin="anonymous"></script>
+        <script src="ICD/all.min.js"></script>
+        <script src="PZN/all.min.js"></script>
+        <script src="qrecords.js"></script>
+    </body>
+</html>
