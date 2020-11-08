@@ -1,1 +1,1 @@
-Sitemap: https://www.qrecords.de/sitemap.xml
+Sitemap: https://qrecords.github.io/sitemap.xml
